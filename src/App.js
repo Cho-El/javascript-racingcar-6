@@ -1,5 +1,12 @@
 class App {
-  async play() {}
+  async play(a,b) {
+    return add(a,b);
+  }
 }
 
-export default App;
+const add = (a,b) => {
+  return a + b
+}
+
+
+export {App, add};
