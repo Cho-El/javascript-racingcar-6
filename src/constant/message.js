@@ -5,6 +5,7 @@ const MESSAGE = Object.freeze({
     },
     error: {
       includeComma: '[ERROR] 콤마가 하나 이상 포함되어 있어야 합니다.',
+      onlyNum: '[ERROR] 숫자만 입력해주세요.',
       carName:
         '[ERROR] 1글자 이상, 5글자 이하의 이름을 쉼표(,)로 구분하여 입력하세요.',
       carNameNumber: '[ERROR] 경주할 자동차의 이름은 2개 이상이어야 합니다.',

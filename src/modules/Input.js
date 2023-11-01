@@ -1,9 +1,23 @@
 import { Console } from "@woowacourse/mission-utils";
 import MESSAGE from "../constant/message.js"
 import CONDITION from "../constant/condition.js"
+
 class Input {
     inputCarName() {
-        Console.readLineAsync()
+        const inputCarName = Console.readLineAsync()
+        this.carNameValidation(inputCarName)
+    }
+    inputTryNum() {
+        const inputTryNum = Console.readLineAsync()
+        this.tryNumValidation(inputTryNum)
+    }
+    tryNumValidation(tryNum) {
+        if (isNaN(tryNum)) {
+            throw new Error(MESSAGE.error.onlyNum)
+        }
+        if (tryNum < 1) {
+            throw new Error(MESSAGE.error.numberOfTimes)    
+        }
     }
     carNameValidation(carName) {
         if (!(carName.includes(","))){

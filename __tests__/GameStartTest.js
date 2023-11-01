@@ -3,6 +3,9 @@ import MESSAGE from "../src/constant/message.js"
 import { MissionUtils } from "@woowacourse/mission-utils";
 import * as print from "../src/modules/Print.js"
 import Input from "../src/modules/Input.js"
+import CarFactory from "../src/modules/CarFactory.js";
+import Car from "../src/modules/Car.js";
+
 const mockQuestions = (inputs) => {
   MissionUtils.Console.readLineAsync = jest.fn();
 
@@ -44,5 +47,25 @@ describe("게임시작", () => {
 
       // then
       expect(() => inputCar.carNameValidation(input)).toThrow("[ERROR]")
+    })
+
+    test.each([[-1],[""],["ten"],["-"]])("잘못된 시도 횟수 입력시 에러를 던져준다.", (input) => {
+      // when 
+      const inputTryNum = new Input()
+
+      // then
+      expect(() => inputTryNum.tryNumValidation(input)).toThrow("[ERROR]")
+    })
+
+    test("Car 이름 배열을 입력받으면 Car클래스가 제대로 생성되는지 체크", () => {
+      // given
+      const inputArray = ["cho", "yoon", "jun"]
+      const output = [new Car("cho"), new Car("yoon"), new Car("jun")]
+      // when
+      const {createCarArray} = CarFactory
+      const result = createCarArray(inputArray)
+
+      // then
+      expect(result).toStrictEqual(output)
     })
 })
