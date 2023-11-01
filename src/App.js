@@ -1,12 +1,14 @@
+import MESSAGE from "./constant/message.js"
+import { MissionUtils } from "@woowacourse/mission-utils";
+import Print from "./modules/Print.js"
+import Input from "./modules/Input.js"
 class App {
-  async play(a,b) {
-    return add(a,b);
+  constructor () {
+    this.Print = new Print()
+  }
+  async play() {
+    this.Print.getCarNameInputMessage();
   }
 }
 
-const add = (a,b) => {
-  return a + b
-}
-
-
-export {App, add};
+export default App;

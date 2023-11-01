@@ -1,5 +1,5 @@
 // import {App, add} from "../src/App.js";
-import {App, add} from "../src/App.js";
+import * as appTest from "../src/App.js";
 // describe('App', () => {
 // it('should call the add function', async () => {
 //     const app = new App();
@@ -37,13 +37,29 @@ import {App, add} from "../src/App.js";
 
 describe('함수 호출 테스트', () => {
     it('play에서 add함수 호출했는지 확인', async () => {
-        add = jest.fn();
+        const app = new appTest.App();
+        appTest.add = jest.fn();
 
-        const app = new App();
-        const result = await app.play(1,2);
+        // const result = await app.play(1,2);
+        await app.play(1,2);
 
-        await expect(result).toBe(3);
-        expect(add).toHaveBeenCalled()
+
+        // await expect(result).toBe(3);
+        expect(appTest.add).toHaveBeenCalled()
         // await expect(add).toHaveBeenCalledWith(1, 2)
     })
 });
+
+// import * as appTest from "../src/App.js";
+
+// describe('함수 호출 테스트', () => {
+//     it('play에서 add함수 호출했는지 확인', async () => {
+//         appTest.add = jest.fn();
+
+//         const app = new appTest.App();
+//         await app.play(1,2);
+
+
+//         await expect(appTest.add).toHaveBeenCalled()
+//     })
+// });
